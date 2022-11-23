@@ -106,7 +106,7 @@ class _ProfilViewState extends State<ProfilView> {
                           return null;
                         }),
                     ListTile(
-                        title:  const Text("owner"),
+                        title:  const Text("Owner"),
                         leading: Radio<Role>(
                           value: Role.owner,
                           groupValue: _role,
