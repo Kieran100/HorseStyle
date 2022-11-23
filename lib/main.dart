@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'HorseStyle'),
+      home: ProfilView(),//const MyHomePage(title: 'HorseStyle'),
     );
   }
 }

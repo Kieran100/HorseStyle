@@ -20,8 +20,9 @@ class _ProfilViewState extends State<ProfilView> {
       ),
       body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 30),
               Container(
                 width: 200,
                 height: 200,
@@ -33,12 +34,19 @@ class _ProfilViewState extends State<ProfilView> {
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
               Text ("role : DP(cavalier) et/ou propriétaire"),
+              const SizedBox(height: 30),
               Text("name"),
+              const SizedBox(height: 30),
               Text("adresse e-mail"),
+              const SizedBox(height: 30),
               Text("téléphone"),
+              const SizedBox(height: 30),
               Text("age"),
+              const SizedBox(height: 30),
               Text ("lien vers FFE"),
+              const SizedBox(height: 30),
               ElevatedButton(
                   onPressed:null,
                   child: Text("Modifier Profil")),
