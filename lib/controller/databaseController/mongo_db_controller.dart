@@ -6,7 +6,7 @@ class MongoDataBaseController {
   static connect() async{
     var db = await Db.create(MONGO_URL);
     await db.open();
+    var status = db.serverStatus();
     inspect(db);
-    var collection = db.collection(COLLECTION_USER);
   }
 }
