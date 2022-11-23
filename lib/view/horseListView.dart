@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:horsestyle/model/horse.dart';
+import 'package:horsestyle/widget/horsesCard.dart';
 
 class HorseListView extends StatefulWidget {
   const HorseListView({super.key});
@@ -8,50 +10,43 @@ class HorseListView extends StatefulWidget {
 }
 
 class _HorseListViewState extends State<HorseListView> {
-  int _count = 0;
 
-  //exo 3
-
-
-  List<Widget> widgetCard = [];
-
-  void _incrementCounter() {
-    setState(() {
-      _count++;
-    });
+  @override
+  void initState() {
+    horseCardList.add(horsesCard1);
+    horseCardList.add(horsesCard2);
+    horseCardList.add(horsesCard3);
+    horseCardList.add(horsesCard4);
+    horseCardList.add(horsesCard5);
+    super.initState();
   }
 
- // Future<List<Horse>> horseList() {
-  //  setState(() {
-      //recuperer les horse du model Horse
-   // });
-  //}
+  Horse horse1 = Horse("Idalgo", "5", "brun","Appaloosa" , "male", "Course", "1");
+  Horse horse2 = Horse("magic", "20", "rousse", "Pottok", "female", "obstacle", "2");
+  Horse horse3 = Horse("Phoebus", "7", "blanche", "Percheron", "female", "course", "3");
+  Horse horse4 = Horse("Kiss", "10", "noire", "Akhal-Téké", "female", "course", "4");
+  Horse horse5 = Horse("Odin", "12", "noire", "Haflinge", "male", "course", "5");
 
-  // This widget is the root of your application.
+
+  List<Widget> horseCardList = [];
+  HorsesCard horsesCard1 = HorsesCard(Horse("Idalgo", "5", "brun","Appaloosa" , "male", "Course", "image"));
+  HorsesCard horsesCard2 = HorsesCard(Horse("magic", "20", "rousse", "Pottok", "female", "obstacle", "image"));
+  HorsesCard horsesCard3 = HorsesCard(Horse("Phoebus", "7", "blanche", "Percheron", "female", "course", "image"));
+  HorsesCard horsesCard4 = HorsesCard(Horse("Kiss", "10", "noire", "Akhal-Téké", "female", "course", "image"));
+  HorsesCard horsesCard5 = HorsesCard(Horse("Odin", "12", "noire", "Haflinge", "male", "course", "image"));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("paye ta carte"),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.account_box),
-              onPressed: () {
-
-              },
-            )
-          ],
+          title: const Text("Horses list"),
         ),
-        floatingActionButton: FloatingActionButton(
-            elevation: 5,
-            onPressed: () {
-              //randowCardWidget();
-            }),
+
         body: Center(
             child: ListView.builder(
-                itemCount: _count,
+                itemCount: horseCardList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return widgetCard[index];
+                  return horseCardList[index];
                 })));
   }
 }

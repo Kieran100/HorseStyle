@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
+import 'package:horsestyle/view/horseListView.dart';
 import 'package:horsestyle/view/profilView.dart';
 import 'package:horsestyle/view/registerView.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: const RegisterView(),
+      home: const HorseListView(),
 
     );
   }
