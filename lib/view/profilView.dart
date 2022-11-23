@@ -21,8 +21,18 @@ class _ProfilViewState extends State<ProfilView> {
       body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              //Image(image: image),
+            children: <Widget>[
+              Container(
+                width: 200,
+                height: 200,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
+                      fit: BoxFit.fill
+                  ),
+                ),
+              ),
               Text ("role : DP(cavalier) et/ou propriétaire"),
               Text("name"),
               Text("adresse e-mail"),
