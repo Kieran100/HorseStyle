@@ -9,4 +9,8 @@ class MongoDataBaseController {
     inspect(db);
     var collection = db.collection(COLLECTION_USER);
   }
+
+  static addUser() async{
+    connect();
+  }
 }
