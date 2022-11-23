@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
 
+  static const tag = "register_View";
+
   @override
   State<RegisterView> createState() => _RegisterViewState();
 }
@@ -19,7 +21,8 @@ class _RegisterViewState extends State<RegisterView> {
       ),
       body: Center(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               TextFormField(
                 decoration: const InputDecoration(
