@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
 
 import '../model/enumRole.dart';
 
@@ -18,6 +19,7 @@ class _ProfilViewState extends State<ProfilView> {
   TextEditingController nameChange = TextEditingController();
   TextEditingController emailChange = TextEditingController();
   TextEditingController passwordChange = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _ProfilViewState extends State<ProfilView> {
               const SizedBox(height: 30),
               Text("age"),
               const SizedBox(height: 30),
-              const Text ("https://sso.ffe.com/login?service=https%3A//www.ffe.com/casservice"),
+              const Text ("https://www.ffe.com/"),
               const SizedBox(height: 30),
               ElevatedButton(
                   onPressed:(){
