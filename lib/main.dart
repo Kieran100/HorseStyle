@@ -18,13 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {ProfilView.tag : (context)=>const ProfilView(),
+       HorseListView.tag : (context)=>const HorseListView()},
       debugShowCheckedModeBanner: false,
       title: 'Horse Style',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
 
-      home: const HorseListView(),
+      home: const ProfilView(),
 
     );
   }

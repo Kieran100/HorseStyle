@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
 
 import '../model/enumRole.dart';
+import 'horseListView.dart';
 
 class ProfilView extends StatefulWidget {
   const ProfilView({super.key});
 
-
+  static const tag = "profil_view";
 
   @override
   State<ProfilView> createState() => _ProfilViewState();
@@ -56,16 +57,25 @@ class _ProfilViewState extends State<ProfilView> {
               const SizedBox(height: 30),
               const Text ("https://www.ffe.com/"),
               const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:[
               ElevatedButton(
                   onPressed:(){
                     openDialog();
                   },
-                  child: Text("Modifier Profil")),
+                  child: const Text("Modifier Profil")),
+                  const SizedBox(width: 50),
+                  ElevatedButton(onPressed:(){
+                      Navigator.of(context).pushNamed(HorseListView.tag);
+
+                  },
+                      child: const Text("Horse List"))
 
 
 
 
-            ],
+             ])  ],
           )
       ),
     );
