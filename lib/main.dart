@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:horsestyle/controller/databaseController/mongo_Db_Controller.dart';
+import 'dart:async';
+import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await MongoDataBaseController.connect();
+  await MongoDataBaseController.connect();
   runApp(const MyApp());
 }
 
