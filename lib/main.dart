@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
+import 'package:horsestyle/view/profilView.dart';
 
 
 Future<void> main() async {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Horse Style'),
+      home: const MyHomePage(title: 'HorseStyle'),
     );
   }
 }
