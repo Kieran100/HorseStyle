@@ -9,4 +9,8 @@ class MongoDataBaseController {
     var status = db.serverStatus();
     inspect(db);
   }
+
+  static addUser() async{
+    connect();
+  }
 }

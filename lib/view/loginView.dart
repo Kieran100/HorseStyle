@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 class ProfilView extends StatefulWidget {
   const ProfilView({super.key});
 
@@ -28,4 +29,14 @@ class _ProfilViewState extends State<ProfilView> {
       ),
     );
   }
+=======
+class LoginView extends StatefulWidget{
+
+  @override
+  State<StatefulWidget> createState() {
+
+    throw UnimplementedError();
+  }
+
+>>>>>>> alexis
 }
