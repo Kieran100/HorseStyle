@@ -7,8 +7,6 @@ import 'package:horsestyle/view/profilView.dart';
 import 'package:intl/intl.dart';
 
 
-
-
 class LessonsView extends StatefulWidget {
   const LessonsView({super.key, required this.title});
 

@@ -81,9 +81,6 @@ class _ProfilViewState extends State<ProfilView> {
                   },
                       child: const Text("Horse List"))
 
-
-
-
              ])  ],
           )
       ),

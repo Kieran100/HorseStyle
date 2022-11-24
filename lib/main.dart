@@ -23,11 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Horse Style',
+
+      title: 'HORSE STYLE',
+      routes: { 
+        //LoginView.tag : (context) => const LoginView(),
+        RegisterView.tag : (context) => const RegisterView(),
+
+      },
+
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const RegisterView(),
+      home: const MyHomePage(title: "home"),
 
     );
   }
@@ -79,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )
           ),
             onPressed: () {
-            //  Navigator.of(context).pushNamed(RegisterView.tag);
+              Navigator.of(context).pushNamed(RegisterView.tag);
             },
             child: const Text('INSCRIPTION')),
 
