@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 
-class LoginView extends StatefulWidget{
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
 
   static const tag = "login_View";
 
   @override
-  State<StatefulWidget> createState() {
+  State<LoginView> createState() => _LoginViewState();
+}
 
-    throw UnimplementedError();
+class _LoginViewState extends State<LoginView> {
+  @override
+  Widget build(BuildContext context) {
+
+    return Container();
   }
-
 }

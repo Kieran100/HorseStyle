@@ -7,8 +7,12 @@ import 'package:horsestyle/view/homeView.dart';
 import 'package:horsestyle/view/lessonsView.dart';
 import 'package:horsestyle/view/loginView.dart';
 import 'package:horsestyle/view/profilView.dart';
+<<<<<<< HEAD
 //import 'package:horsestyle/view/registerView.dart'
 
+=======
+import 'package:horsestyle/view/registerView.dart';
+>>>>>>> 42728041f570687582a8b30ac03f5536ab7a7a1a
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +36,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
+<<<<<<< HEAD
       home: const MyFirstPage(title: 'HORSE STYLE'),
+=======
+      home: const RegisterView(),
+>>>>>>> 42728041f570687582a8b30ac03f5536ab7a7a1a
     );
   }
 }
