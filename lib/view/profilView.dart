@@ -42,7 +42,7 @@ class _ProfilViewState extends State<ProfilView> {
       ),
       body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 30),
               Container(
@@ -129,7 +129,7 @@ class _ProfilViewState extends State<ProfilView> {
                           return null;
                         }),
                     TextFormField(
-                        decoration: const InputDecoration(labelText: "E-mail"),
+                        decoration: const InputDecoration(labelText: "Phone Number"),
                         controller: age,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -138,7 +138,7 @@ class _ProfilViewState extends State<ProfilView> {
                           return null;
                         }),
                     TextFormField(
-                        decoration: const InputDecoration(labelText: "E-mail"),
+                        decoration: const InputDecoration(labelText: "Age"),
                         controller: phone,
                         validator: (value) {
                           if (value == null || value.isEmpty) {

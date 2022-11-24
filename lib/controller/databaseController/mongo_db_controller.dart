@@ -23,7 +23,7 @@ class MongoDataBaseController {
 
       final find = await userCollection.findOne();
 
-      UserModel user = new UserModel(
+      UserModel user = UserModel(
         find['_id'],
         find['username'],
         find['email'],
@@ -43,7 +43,7 @@ class MongoDataBaseController {
     try{
       final find = await userCollection.findOne(where.eq('username', name));
 
-      UserModel user = new UserModel(
+      UserModel user = UserModel(
           find['_id'],
           find['username'],
           find['email'],
