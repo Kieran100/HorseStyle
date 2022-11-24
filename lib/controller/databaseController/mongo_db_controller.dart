@@ -1,20 +1,38 @@
 import 'dart:developer';
 import 'package:horsestyle/controller/databaseController/constante.dart';
+import 'package:horsestyle/model/user.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
-var db;
-var collectionUser;
+var userCollection;
 
 class MongoDataBaseController {
+
   static connect() async{
-    db = await Db.create(MONGO_URL);
+    var db = await Db.create(MONGO_URL);
     await db.open();
-    var status = db.serverStatus();
     inspect(db);
+    userCollection = db.collection(COLLECTION_USER);
+    var status = db.serverStatus();
+
   }
 
-  static getUserByName(name) async{
-    connect();
-    await collectionUser.find(where.eq('name', name)).toList();
+
+  static getUser() async {
+    try {
+      final users = await userCollection.findOne();
+      return users;
+    } catch (e) {
+      return Future.error(e);
+    }
   }
+
+  static setUser() async {
+    try{
+      final users = await userCollection.insertOne();
+      return users;
+    }catch(e){
+      return Future.error(e);
+    }
+  }
+
 }
