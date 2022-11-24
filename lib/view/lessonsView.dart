@@ -12,6 +12,7 @@ import 'package:horsestyle/model/enum_discipline.dart';
 import 'package:horsestyle/model/enum_ground.dart';
 
 
+
 class LessonsView extends StatefulWidget {
   const LessonsView({super.key, required this.title});
 

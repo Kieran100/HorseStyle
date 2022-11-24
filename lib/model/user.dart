@@ -1,97 +1,74 @@
-import 'dart:typed_data';
+import 'dart:ffi';
 
 import 'package:mongo_dart/mongo_dart.dart';
 
 class UserModel{
-  late ObjectId objectId;
-  late String username;
-  late String email;
-  late String password;
-  late Int64List img_profile;
-  var horse_owner;
-  var ride;
-  var owner;
 
-}
+  late final ObjectId _objectId;
+  late final String _username;
+  late final String _email;
+  late final String _password;
+  late final int _img_profile;
+  late final _horse_owner;
+  late final _ride;
+  late final _owner;
 
-class User extends UserModel{
+  UserModel(
+      this._objectId,
+      this._username,
+      this._email,
+      this._password,
+      this._img_profile,
+      this._horse_owner,
+      this._ride,
+      this._owner
+      );
 
-  @override
-  set objectId(ObjectId _objectId) {
-    // TODO: implement objectId
-    super.objectId = _objectId;
-  }
-  @override
-  // TODO: implement objectId
-  ObjectId get objectId => super.objectId;
+  ObjectId get objectId => _objectId;
 
-  @override
-  set username(String _username) {
-    // TODO: implement username
-    super.username = _username;
-  }
-
-  @override
-  // TODO: implement username
-  String get username => super.username;
-
-  @override
-  set email(String _email) {
-    // TODO: implement email
-    super.email = _email;
+  set objectId(ObjectId value) {
+    _objectId = value;
   }
 
-  @override
-  // TODO: implement email
-  String get email => super.email;
+  String get username => _username;
 
-  @override
-  set password(String _password) {
-    // TODO: implement password
-    super.password = _password;
+  set username(String value) {
+    _username = value;
   }
 
-  @override
-  // TODO: implement password
-  String get password => super.password;
+  String get email => _email;
 
-  @override
-  set img_profile(Int64List _img_profile) {
-    // TODO: implement img_profile
-    super.img_profile = _img_profile;
+  set email(String value) {
+    _email = value;
   }
 
-  @override
-  // TODO: implement img_profile
-  Int64List get img_profile => super.img_profile;
+  String get password => _password;
 
-  @override
-  set horse_owner(_horse_owner) {
-    // TODO: implement horse_owner
-    super.horse_owner = _horse_owner;
-  }
-  @override
-  // TODO: implement horse_owner
-  get horse_owner => super.horse_owner;
-
-  @override
-  set ride(_ride) {
-    // TODO: implement ride
-    super.ride = _ride;
+  set password(String value) {
+    _password = value;
   }
 
-  @override
-  // TODO: implement ride
-  get ride => super.ride;
+  int get img_profile => _img_profile;
 
-  @override
-  set owner(_owner) {
-    // TODO: implement owner
-    super.owner = _owner;
+  set img_profile(int value) {
+    _img_profile = value;
   }
 
-  @override
-  // TODO: implement owner
-  get owner => super.owner;
+  get horse_owner => _horse_owner;
 
+  set horse_owner(value) {
+    _horse_owner = value;
+  }
+
+  get ride => _ride;
+
+  set ride(value) {
+    _ride = value;
+  }
+
+  get owner => _owner;
+
+  set owner(value) {
+    _owner = value;
+  }
 }

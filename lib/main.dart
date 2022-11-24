@@ -5,9 +5,11 @@ import 'package:horsestyle/view/competitionsView.dart';
 import 'package:horsestyle/view/eventsView.dart';
 import 'package:horsestyle/view/homeView.dart';
 import 'package:horsestyle/view/lessonsView.dart';
+
+
 import 'package:horsestyle/view/loginView.dart';
 import 'package:horsestyle/view/profilView.dart';
-//import 'package:horsestyle/view/registerView.dart';
+import 'package:horsestyle/view/registerView.dart';
 
 
 Future<void> main() async {
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       title: 'HORSE STYLE',
       initialRoute: '/',
       routes: {
@@ -37,6 +40,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
       ),
       home: const MyFirstPage(title: 'HORSE STYLE'),
+
     );
   }
 }
@@ -87,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )
           ),
             onPressed: () {
-            //  Navigator.of(context).pushNamed(RegisterView.tag);
+              Navigator.of(context).pushNamed(RegisterView.tag);
             },
             child: const Text('INSCRIPTION')),
 

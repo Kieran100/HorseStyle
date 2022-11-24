@@ -2,36 +2,78 @@ import 'dart:developer';
 import 'package:horsestyle/controller/databaseController/constante.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
-var db;
-var collectionUser;
+import '../../model/user.dart';
+
+var userCollection;
 
 class MongoDataBaseController {
+
   static connect() async{
-    db = await Db.create(MONGO_URL);
+    var db = await Db.create(MONGO_URL);
     await db.open();
-    var status = db.serverStatus();
     inspect(db);
-    print(status);
-    var collection = db.collection(COLLECTION_HORSE);
-    print(await collection.find().toList());
-   /* await collection.insertOne({
-      "id": "1",
-      "name": "lulu",
-      "picture":"?",
-      "age":"1",
-      "coat":"brown",
-      "breed":"truc",
-      "gender":"female",
-      "ability":"truc",
-      "owner": "roger",
-      "stable":"ecurie de reve",
-      "dp":"yes",
-    });*/
+    userCollection = db.collection(COLLECTION_USER);
+    var status = db.serverStatus();
 
   }
 
-  static getUserByName(name) async{
-    connect();
-    await collectionUser.find(where.eq('name', name)).toList();
+
+  static getUser() async {
+    try {
+
+      final find = await userCollection.findOne();
+
+      UserModel user = new UserModel(
+        find['_id'],
+        find['username'],
+        find['email'],
+        find['password'],
+        find['img_profile'],
+        find['horse_owner'],
+        find['ride'],
+        find['owner']
+      );
+      return user;
+    } catch (e) {
+      return Future.error(e);
+    }
   }
+
+  static getUserByUsername(name) async{
+    try{
+      final find = await userCollection.findOne(where.eq('username', name));
+
+      UserModel user = new UserModel(
+          find['_id'],
+          find['username'],
+          find['email'],
+          find['password'],
+          find['img_profile'],
+          find['horse_owner'],
+          find['ride'],
+          find['owner']
+      );
+
+      return user;
+    }catch(e){
+      return Future.error(e);
+    }
+  }
+
+  static setUser(UserModel user) async {
+    try{
+      final users = userCollection.insertOne({
+        'username': user.username,
+        'email': user.email,
+        'passworld': user.password,
+        'img_profile': user.img_profile,
+        'horse_owner': user.horse_owner,
+        'ride': user.ride,
+        'owner': user.owner
+      });
+    }catch(e){
+      return Future.error(e);
+    }
+  }
+
 }
