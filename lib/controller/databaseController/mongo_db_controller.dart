@@ -62,7 +62,7 @@ class MongoDataBaseController {
 
   static setUser(UserModel user) async {
     try{
-      final users = await userCollection.insertOne({
+      final users = userCollection.insertOne({
         'username': user.username,
         'email': user.email,
         'passworld': user.password,

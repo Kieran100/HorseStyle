@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
-
-
 import 'package:horsestyle/view/loginView.dart';
 import 'package:horsestyle/view/horseListView.dart';
 import 'package:horsestyle/view/profilView.dart';
@@ -23,13 +21,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {HorseListView.tag : (context)=>const HorseListView()},
+
       title: 'Horse Style',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
       home: const ProfilView(),
 
+      routes: { 
+        //LoginView.tag : (context) => const LoginView(),
+        RegisterView.tag : (context) => const RegisterView(),
+    HorseListView.tag : (context)=>const HorseListView()
+
+      },
     );
   }
 }
@@ -80,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )
           ),
             onPressed: () {
-            //  Navigator.of(context).pushNamed(RegisterView.tag);
+              Navigator.of(context).pushNamed(RegisterView.tag);
             },
             child: const Text('INSCRIPTION')),
 
