@@ -10,7 +10,4 @@ class UsualText extends StatelessWidget{
   Widget build(BuildContext context) {
     return Text(text);
   }
-
-
-
 }
