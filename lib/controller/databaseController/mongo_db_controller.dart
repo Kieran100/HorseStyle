@@ -10,9 +10,13 @@ class MongoDataBaseController {
     var db = await Db.create(MONGO_URL);
     await db.open();
     inspect(db);
+
     userCollection = db.collection(COLLECTION_USER);
     var status = db.serverStatus();
 
+    print(status);
+    var collection = db.collection(COLLECTION_HORSE);
+    print(await collection.find().toList());
   }
 
 
