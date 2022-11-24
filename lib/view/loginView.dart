@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
+
+  static const tag = "login_View";
+
   @override
   State<LoginView> createState() => _LoginViewState();
 }
