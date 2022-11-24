@@ -29,8 +29,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  address_search_field: ^5.0.3
   flutter:
     sdk: flutter
+
+  image_picker: ^0.8.6
+  flutter_image_compress: ^1.1.3
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,9 +43,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   mongo_dart: ^0.8.1
 
+  #   url: https://github.com/mongo-dart/mongo_dart.git
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  intl: ^0.17.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,10 +68,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
+    # To add assets to your application, add an assets section, like this:
+    #assets:
+    #   - images/a_dot_burr.jpeg
+    #   - images/a_dot_ham.jpeg
+
   # To add assets to your application, add an assets section, like this:
-  #assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/Bg-cheval.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
