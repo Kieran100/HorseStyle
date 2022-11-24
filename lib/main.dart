@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
-<<<<<<< HEAD
 import 'package:horsestyle/view/loginView.dart';
-=======
 import 'package:horsestyle/view/horseListView.dart';
->>>>>>> profilview
 import 'package:horsestyle/view/profilView.dart';
 import 'package:horsestyle/view/registerView.dart';
 
@@ -29,13 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-<<<<<<< HEAD
       home: const LoginView(),
-=======
-
-      home: const ProfilView(),
-
->>>>>>> profilview
     );
   }
 }
