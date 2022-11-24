@@ -15,6 +15,8 @@ import 'package:intl/intl.dart';
 class CompetitionsView extends StatefulWidget {
   const CompetitionsView({super.key, required this.title});
 
+  static const tag = "competitions_Page";
+
   final String title;
 
   @override

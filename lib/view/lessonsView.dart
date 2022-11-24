@@ -1,16 +1,21 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
+import 'package:horsestyle/model/lessons.dart';
 import 'package:horsestyle/view/profilView.dart';
 //import 'package:horsestyle/view/registerView.dart';
 import 'package:intl/intl.dart';
-
-
+import 'package:horsestyle/model/enum_discipline.dart';
+import 'package:horsestyle/model/enum_ground.dart';
 
 
 class LessonsView extends StatefulWidget {
   const LessonsView({super.key, required this.title});
+
+  static const tag = "lessons_Page";
 
   final String title;
 
@@ -20,8 +25,10 @@ class LessonsView extends StatefulWidget {
 
 class _LessonsViewState extends State<LessonsView> {
 
-  String ground = "carrière";
-  String discipline = "dressage";
+  Ground?_ground = Ground.career;
+ Discipline? _discipline = Discipline.dressage;
+
+
 
 
   late final bool readOnly;
@@ -35,7 +42,18 @@ class _LessonsViewState extends State<LessonsView> {
 
   String temp="";
 
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController hoursController = TextEditingController();
+
+
+ /* void _incrementCounter(){
+    setState(() {
+    //  LessonsObj lessonsObj = LessonsObj(careerController.text, horseRideController.text, hoursController.text, dateinput.text,dressageController.text,jumpsController.text,enduranceController.text);
+
+
+    });
+  } */
+
+
 
   @override
   void initState() {
@@ -55,28 +73,30 @@ class _LessonsViewState extends State<LessonsView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget> [
           const Text ("Terrain"),
-          RadioListTile(
+          ListTile(
             title: Text("Carrière"),
-            value: "1",
-            groupValue: ground,
+            leading: Radio<Ground>(
+            value: Ground.career,
+            groupValue: _ground,
             onChanged: (value){
               setState(() {
-                ground = value.toString();
+                _ground = value;
               });
             },
 
-          ),
-          RadioListTile(
+            )),
+       ListTile(
             title: Text("Manège"),
-            value: "2",
-            groupValue: ground,
+            leading: Radio<Ground> (
+            value: Ground.horseRide,
+            groupValue: _ground,
             onChanged: (value){
               setState(() {
-                ground = value.toString();
+                _ground = value;
               });
             },
 
-          ),
+            ) ),
     TextField(
     controller: dateinput, //editing controller of this TextField
     decoration: const InputDecoration(
@@ -87,26 +107,26 @@ class _LessonsViewState extends State<LessonsView> {
           onTap: () async {
             DateTime? pickedDate = await showDatePicker(
                 context: context, initialDate: DateTime.now(),
-                firstDate: DateTime(2021), //DateTime.now() - not to allow to choose before today.
+                firstDate: DateTime.now(), //DateTime.now() - not to allow to choose before today.
                 lastDate: DateTime(2101)
             );
 
             if(pickedDate != null ){
-              print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
-              String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-              print(formattedDate); //formatted date output using intl package =>  2021-03-16
+              //print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+              String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+              print(formattedDate); //formatted date output using intl package =>  16-03-2021
               //you can implement different kind of Date Format here according to your requirement
 
               setState(() {
                 dateinput.text = formattedDate; //set output date to TextField value.
               });
             }else{
-              print("Date is not selected");
+              print("Date non séléctionnée");
             }}),
 
 
       TextFormField(
-        controller: _controller,
+        controller: hoursController,
         keyboardType:
         const TextInputType.numberWithOptions(decimal: false),
         inputFormatters: [
@@ -128,7 +148,7 @@ class _LessonsViewState extends State<LessonsView> {
             case 1:
               setState(() {
                 temp=val;
-                _controller.value = _controller.value.copyWith(
+                hoursController.value = hoursController.value.copyWith(
                   text: "$hrCounter:$minCounter",
                   selection: const TextSelection.collapsed(offset: 8),
                 );
@@ -141,10 +161,11 @@ class _LessonsViewState extends State<LessonsView> {
               y=y.replaceAll(":", "");
               val="${y.substring(0,2)}:${y.substring(2,4)}";
               temp=val;
-              _controller.value = _controller.value.copyWith(
+              hoursController.value = hoursController.value.copyWith(
                 text: val,
                 selection: const TextSelection.collapsed(offset: 8),
               );
+              print(hoursController);
             });
             break;
 
@@ -153,45 +174,48 @@ class _LessonsViewState extends State<LessonsView> {
       ),
 
            Text ("Discipline"),
-          RadioListTile(
+          ListTile(
             title: const Text("Dressage"),
-            value: "1",
-            groupValue: discipline,
+            leading: Radio<Discipline>(
+            value: Discipline.dressage,
+            groupValue: _discipline,
             onChanged: (value){
               setState(() {
-                discipline = value.toString();
+                _discipline = value;
               });
             },
 
-          ),
-          RadioListTile(
+            ) ),
+          ListTile(
             title: const Text("Saut d'obstacle"),
-            value: "2",
-            groupValue: discipline,
+            leading: Radio<Discipline>(
+            value: Discipline.jumps,
+            groupValue: _discipline,
             onChanged: (value){
               setState(() {
-                discipline = value.toString();
+                _discipline = value;
               });
             },
 
-          ),
-          RadioListTile(
+            )),
+          ListTile(
             title: const Text("Endurence"),
-            value: "3",
-            groupValue: discipline,
+            leading: Radio<Discipline>(
+            value: Discipline.endurance,
+            groupValue: _discipline,
             onChanged: (value){
               setState(() {
-                discipline = value.toString();
+                _discipline = value;
               });
             },
 
-          ),
+            ) ),
             TextButton(
               onPressed: () {
-            //    _incrementCounter();
-           //     emailController.clear();
-            //    nomController.clear();
-              //  prenomController.clear();
+            //    _incrementCounter().clear;
+                Lessons lesson = Lessons(_discipline!, _ground!, dateinput.text, hoursController.text);
+                print(lesson.ground.toString().split('.').last);
+                print(lesson.ground.toString().split('.').last.runtimeType);
                 Navigator.pop(context, 'Valider');
               },
               child: const Text('Valider'),

@@ -1,0 +1,4 @@
+enum Ground {
+  career,
+  horseRide,
+}

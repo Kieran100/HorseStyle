@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfilView extends StatefulWidget {
   const ProfilView({super.key});
 
-
+  static const tag = "profil_Page";
 
   @override
   State<ProfilView> createState() => _ProfilViewState();
