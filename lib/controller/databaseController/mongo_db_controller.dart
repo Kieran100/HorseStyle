@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:horsestyle/controller/databaseController/constante.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
+import '../../model/user.dart';
+
 var userCollection;
 
 class MongoDataBaseController {
@@ -10,20 +12,28 @@ class MongoDataBaseController {
     var db = await Db.create(MONGO_URL);
     await db.open();
     inspect(db);
-
     userCollection = db.collection(COLLECTION_USER);
     var status = db.serverStatus();
 
-    print(status);
-    var collection = db.collection(COLLECTION_HORSE);
-    print(await collection.find().toList());
   }
 
 
   static getUser() async {
     try {
-      final users = await userCollection.findOne();
-      return users;
+
+      final find = await userCollection.findOne();
+
+      UserModel user = new UserModel(
+        find['_id'],
+        find['username'],
+        find['email'],
+        find['password'],
+        find['img_profile'],
+        find['horse_owner'],
+        find['ride'],
+        find['owner']
+      );
+      return user;
     } catch (e) {
       return Future.error(e);
     }
@@ -31,17 +41,36 @@ class MongoDataBaseController {
 
   static getUserByUsername(name) async{
     try{
-      final users = await userCollection.findOne(where.eq('username', name));
-      return users;
+      final find = await userCollection.findOne(where.eq('username', name));
+
+      UserModel user = new UserModel(
+          find['_id'],
+          find['username'],
+          find['email'],
+          find['password'],
+          find['img_profile'],
+          find['horse_owner'],
+          find['ride'],
+          find['owner']
+      );
+
+      return user;
     }catch(e){
       return Future.error(e);
     }
   }
 
-  static setUser() async {
+  static setUser(UserModel user) async {
     try{
-      final users = await userCollection.insertOne();
-      return users;
+      final users = await userCollection.insertOne({
+        'username': user.username,
+        'email': user.email,
+        'passworld': user.password,
+        'img_profile': user.img_profile,
+        'horse_owner': user.horse_owner,
+        'ride': user.ride,
+        'owner': user.owner
+      });
     }catch(e){
       return Future.error(e);
     }

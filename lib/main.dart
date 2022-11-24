@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
 
+
 import 'package:horsestyle/view/loginView.dart';
 import 'package:horsestyle/view/horseListView.dart';
 import 'package:horsestyle/view/profilView.dart';
-
 import 'package:horsestyle/view/registerView.dart';
 
 
@@ -22,10 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {ProfilView.tag : (context)=>const ProfilView(),
-       HorseListView.tag : (context)=>const HorseListView()},
       debugShowCheckedModeBanner: false,
-
       title: 'Horse Style',
       theme: ThemeData(
         primarySwatch: Colors.brown,
