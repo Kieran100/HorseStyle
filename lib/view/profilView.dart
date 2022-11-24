@@ -21,6 +21,8 @@ class _ProfilViewState extends State<ProfilView> {
   TextEditingController nameChange = TextEditingController();
   TextEditingController emailChange = TextEditingController();
   TextEditingController passwordChange = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController age = TextEditingController();
   dynamic userFromDb;
 
   Future<UserModel> userDataFromDb() async{
@@ -120,6 +122,24 @@ class _ProfilViewState extends State<ProfilView> {
                     TextFormField(
                         decoration: const InputDecoration(labelText: "Password"),
                         controller: passwordChange,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        }),
+                    TextFormField(
+                        decoration: const InputDecoration(labelText: "E-mail"),
+                        controller: age,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        }),
+                    TextFormField(
+                        decoration: const InputDecoration(labelText: "E-mail"),
+                        controller: phone,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter some text';

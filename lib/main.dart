@@ -23,11 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {HorseListView.tag : (context)=>const HorseListView()},
       title: 'Horse Style',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const RegisterView(),
+      home: const ProfilView(),
 
     );
   }
