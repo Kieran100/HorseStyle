@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
+import 'package:horsestyle/model/user.dart';
 
 import '../model/enumRole.dart';
 import 'horseListView.dart';
@@ -14,13 +15,22 @@ class ProfilView extends StatefulWidget {
 }
 
 class _ProfilViewState extends State<ProfilView> {
-
+  
   final _formKey = GlobalKey<FormState>();
   Role? _role = Role.rider;
   TextEditingController nameChange = TextEditingController();
   TextEditingController emailChange = TextEditingController();
   TextEditingController passwordChange = TextEditingController();
+  dynamic userFromDb;
 
+  Future<UserModel> userDataFromDb() async{
+    try{
+      final UserModel user = await MongoDataBaseController.getUserByUsername("B3r4ti0n");
+        return user;
+    }catch(e){
+      return Future.error(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +57,7 @@ class _ProfilViewState extends State<ProfilView> {
               const SizedBox(height: 30),
               Text ("role : DP(cavalier) et/ou propriétaire"),
               const SizedBox(height: 30),
-              Text("name"),
+              Text("nom"),
               const SizedBox(height: 30),
               Text("adresse e-mail"),
               const SizedBox(height: 30),
@@ -68,7 +78,6 @@ class _ProfilViewState extends State<ProfilView> {
                   const SizedBox(width: 50),
                   ElevatedButton(onPressed:(){
                       Navigator.of(context).pushNamed(HorseListView.tag);
-
                   },
                       child: const Text("Horse List"))
 

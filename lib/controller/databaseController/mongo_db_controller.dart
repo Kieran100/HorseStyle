@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:horsestyle/controller/databaseController/constante.dart';
-import 'package:horsestyle/model/user.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 var userCollection;
