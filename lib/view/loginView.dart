@@ -14,7 +14,8 @@ class _LoginViewState extends State<LoginView> {
   var user;
   @override
   Widget build(BuildContext context) {
-    MongoDataBaseController.getUser().then((result) => user = result);
+    MongoDataBaseController.getUserByUsername('B3r4').then((result) => user = result);
+    print(user);
     var username;
     try{
       username = user["username"].toString();

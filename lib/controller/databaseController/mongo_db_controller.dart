@@ -26,6 +26,15 @@ class MongoDataBaseController {
     }
   }
 
+  static getUserByUsername(name) async{
+    try{
+      final users = await userCollection.findOne(where.eq('username', name));
+      return users;
+    }catch(e){
+      return Future.error(e);
+    }
+  }
+
   static setUser() async {
     try{
       final users = await userCollection.insertOne();
