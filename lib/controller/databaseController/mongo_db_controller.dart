@@ -80,6 +80,7 @@ class MongoDataBaseController {
   static setlessons(Lessons _lessons) async {
     try{
       final lessons = userCollection.insertOne({
+        '_id': 1,
       'discipline': _lessons.discipline,
       'ground': _lessons.ground,
       'hours': _lessons.hours,
