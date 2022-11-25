@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         LessonsView.tag : (context) => const LessonsView(title: '',),
         CompetitionsView.tag : (context) => const CompetitionsView(title: '',),
         EventsView.tag : (context) => const EventsView(title: '',),
+        RegisterView.tag : (context) => const RegisterView(),
       },
       theme: ThemeData(
         primarySwatch: Colors.brown,
