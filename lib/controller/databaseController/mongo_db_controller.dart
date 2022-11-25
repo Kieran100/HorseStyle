@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:horsestyle/controller/databaseController/constante.dart';
+import 'package:horsestyle/model/lessons.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 import '../../model/user.dart';
@@ -76,4 +77,16 @@ class MongoDataBaseController {
     }
   }
 
+  static setlessons(Lessons _lessons) async {
+    try{
+      final lessons = userCollection.insertOne({
+      'discipline': _lessons.discipline,
+      'ground': _lessons.ground,
+      'hours': _lessons.hours,
+      'date': _lessons.date
+      });
+    }catch(e){
+      return Future.error(e);
+    }
+  }
 }
