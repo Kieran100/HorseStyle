@@ -10,6 +10,8 @@ class HorsesCard extends StatelessWidget {
 
   var _hasBeenClicked = true;
 
+  // Card widget pour récuperer les informations des chevaux
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -36,8 +38,6 @@ class HorsesCard extends StatelessWidget {
                   onPressed: _hasBeenClicked ? () {
                     _hasBeenClicked = false;
                     selectedHorseList.add(horse);
-                    print(selectedHorseList[0]?.name);
-                    print(horse.name);
                     ScaffoldMessenger.of(context)
                         .showSnackBar(const SnackBar(content: Text('Added')));
                   } : null,
@@ -45,7 +45,7 @@ class HorsesCard extends StatelessWidget {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
-                              side: const BorderSide(color: Colors.blue)))),
+                              side: const BorderSide(color: Colors.brown)))),
                   child: const Icon(Icons.add),
                 ))
           ]),
