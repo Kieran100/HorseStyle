@@ -13,6 +13,18 @@ class LoginView extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
+
+
+void loginUserToBD(username) async{
+  await MongoDataBaseController.getUserByUsername(username).then((value){
+    if(value != null){
+      searchUserToDB(username);
+    }
+    else
+    });
+}
+
+
 class _LoginViewState extends State<LoginView> {
   var user;
   @override
@@ -23,8 +35,10 @@ class _LoginViewState extends State<LoginView> {
     try{
       username = user["username"].toString();
     }catch(e){
-      username = "await data";
+      username = "Bienvenue""$user";
     }
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Horse Stylé"),
@@ -34,7 +48,9 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Text(username.toString())
           ],
+
         ),
+
       ),
     );
   }
