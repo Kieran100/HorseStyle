@@ -33,11 +33,7 @@ class _RegisterViewState extends State<RegisterView> {
         addUserToDB(username, email, password);
         //print(addUserToDB(username, email, password))
       }
-
-
     });
-
-
   }
 
   @override
@@ -49,70 +45,75 @@ class _RegisterViewState extends State<RegisterView> {
         title: Text("Horse Style"),
       ),
       body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                textAlign: TextAlign.center,
-                controller: username,
-                decoration: const InputDecoration(
-                  hintText: 'entrer votre nom',
-                    border: OutlineInputBorder()
 
+        child: Form( key: _formKey,
+           child :Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  controller: username,
+                  decoration: const InputDecoration(
+                      hintText: 'entrer votre nom',
+                      border: OutlineInputBorder()
+
+                  ),
+                  validator: ( value) {
+                    if (value == null || value.isEmpty) {
+                      return 'pas de nom';
+                    }
+                    return null;
+                  },
                 ),
-                /*validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'pas de nom';
-                  }
-                  return null;
-                },*/
-              ),
-              SizedBox(height: 10.0),
+                SizedBox(height: 10.0),
 
-              TextFormField(
-                textAlign: TextAlign.center,
-                controller: email,
-                decoration: const InputDecoration(
-                  hintText: 'entrer votre email',
-                    border: OutlineInputBorder()
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  controller: email,
+                  decoration: const InputDecoration(
+                      hintText: 'entrer votre email',
+                      border: OutlineInputBorder()
 
+                  ),
+                  validator: ( value) {
+                    if (value == null || value.isEmpty) {
+                      return 'pas d adresse mail';
+                    }
+                    return null;
+                  },
                 ),
-                /*validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'pas d adresse mail';
-                  }
-                  return null;
-                },*/
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                textAlign: TextAlign.center,
-                controller: password,
-                decoration: const InputDecoration(
-                  hintText: 'Mot de passe',
-                  border: OutlineInputBorder()
+                SizedBox(height: 10.0),
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  controller: password,
+                  decoration: const InputDecoration(
+                      hintText: 'Mot de passe',
+                      border: OutlineInputBorder()
+                  ),
+                  validator: ( value) {
+                    if (value == null || value.isEmpty) {
+                      return 'pas de mot de passe';
+                    }
+                    return null;
+                  },
                 ),
-                /*validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'pas de mot de passe';
-                  }
-                  return null;
-                },*/
-              ),
-              SizedBox(height: 10.0),
+                SizedBox(height: 10.0),
 
-              ElevatedButton(
-                onPressed: () {
-                    addUserToDB(username.text, email.text, password.text);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
-                },
-                child: const Text('Inscription'),
-              ),
-            ]
-        ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      addUserToDB(username.text, email.text, password.text);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    };
+                  },
+                  child: const Text('Inscription'),
+                ),
+              ]
+          ),
+        )
       ),
     );
   }
