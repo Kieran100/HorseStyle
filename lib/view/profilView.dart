@@ -80,6 +80,8 @@ class _ProfilViewState extends State<ProfilView> {
     );
   }
 
+  // Cliquez sur le bouton modifier ouvre une boite de dialogue permettant de modifier les informations perso
+
   openDialog() => showDialog(
       context: context,
       builder: (context) => AlertDialog(
