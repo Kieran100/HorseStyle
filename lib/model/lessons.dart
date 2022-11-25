@@ -1,15 +1,20 @@
-import 'package:horsestyle/model/enum_discipline.dart';
+
 import 'package:mongo_dart/mongo_dart.dart';
 
-import 'enum_ground.dart';
-
 class Lessons {
+  late ObjectId _id;
   late final String _discipline;
   late final String _ground;
   late final String _hours;
   late final String _date;
 
-  Lessons(this._discipline, this._ground, this._hours, this._date);
+  Lessons(this._id,this._discipline, this._ground, this._hours, this._date);
+
+  ObjectId get id => _id;
+
+  set id(ObjectId value) {
+    _id = value;
+  }
 
   String get discipline => _discipline;
 

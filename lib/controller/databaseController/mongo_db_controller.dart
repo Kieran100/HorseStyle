@@ -89,4 +89,28 @@ class MongoDataBaseController {
       return Future.error(e);
     }
   }
+
+
+  static getLessons() async {
+    try {
+
+      final finds = await userCollection.find();
+      Lessons lessons;
+
+      var lessonss;
+      for (var lesson in finds){
+        lessons = new Lessons(
+            lesson['_id'],
+            lesson['discipline'],
+            lesson['ground'],
+            lesson['hours'],
+            lesson['date']
+        );
+        lessonss.add(lessons);
+      }
+      return lessonss;
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }
