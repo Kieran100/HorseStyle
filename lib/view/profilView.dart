@@ -23,16 +23,6 @@ class _ProfilViewState extends State<ProfilView> {
   TextEditingController passwordChange = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController age = TextEditingController();
-  dynamic userFromDb;
-
-  Future<UserModel> userDataFromDb() async{
-    try{
-      final UserModel user = await MongoDataBaseController.getUserByUsername("B3r4ti0n");
-        return user;
-    }catch(e){
-      return Future.error(e);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +34,7 @@ class _ProfilViewState extends State<ProfilView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Container(
                 width: 200,
                 height: 200,
@@ -79,6 +69,7 @@ class _ProfilViewState extends State<ProfilView> {
                   child: const Text("Modifier Profil")),
                   const SizedBox(width: 50),
                   ElevatedButton(onPressed:(){
+
                       Navigator.of(context).pushNamed(HorseListView.tag);
                   },
                       child: const Text("Horse List"))

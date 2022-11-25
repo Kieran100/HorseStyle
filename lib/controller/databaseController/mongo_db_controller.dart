@@ -39,6 +39,22 @@ class MongoDataBaseController {
     }
   }
 
+  static Future<UserModel> getUserByUName(name) async{
+
+    await userCollection.findOne(where.eq("username", name)).then((value){
+               return UserModel(
+                    value["_id"],
+                    value["username"],
+                    value["email"],
+                    value["password"],
+                    value["img_profile"],
+                    value["horse_owner"],
+                    value["ride"],
+                    value["owner"]);
+       });
+
+  }
+
   static getUserByUsername(name) async{
     try{
       final find = await userCollection.findOne(where.eq('username', name));
@@ -65,7 +81,7 @@ class MongoDataBaseController {
       final users = userCollection.insertOne({
         'username': user.username,
         'email': user.email,
-        'passworld': user.password,
+        'password': user.password,
         'img_profile': user.img_profile,
         'horse_owner': user.horse_owner,
         'ride': user.ride,
