@@ -105,7 +105,7 @@ class _RegisterViewState extends State<RegisterView> {
                     if (_formKey.currentState!.validate()) {
                       addUserToDB(username.text, email.text, password.text);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
+                        const SnackBar(content: Text('Merci pour votre inscription !')),
                       );
                     };
                   },
