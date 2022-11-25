@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginView.tag : (context) => const LoginView(),
         ProfilView.tag : (context) => const ProfilView(),
+        RegisterView.tag : (context) => const RegisterView(),
         LessonsView.tag : (context) => const LessonsView(title: '',),
         CompetitionsView.tag : (context) => const CompetitionsView(title: '',),
         EventsView.tag : (context) => const EventsView(title: '',),
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const MyFirstPage(title: 'HORSE STYLE'),
+      home: const MyHomePage(title: 'HORSE STYLE'),
 
     );
   }
