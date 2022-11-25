@@ -1,23 +1,15 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
 import 'package:horsestyle/controller/databaseController/mongo_db_controller.dart';
 import 'package:horsestyle/model/lessons.dart';
-import 'package:horsestyle/view/profilView.dart';
-//import 'package:horsestyle/view/registerView.dart';
 import 'package:intl/intl.dart';
 import 'package:horsestyle/model/enum_discipline.dart';
 import 'package:horsestyle/model/enum_ground.dart';
-
-
 
 class LessonsView extends StatefulWidget {
   const LessonsView({super.key, required this.title});
 
   static const tag = "lessons_Page";
-
   final String title;
 
   @override
@@ -29,14 +21,9 @@ class _LessonsViewState extends State<LessonsView> {
   Ground?_ground = Ground.career;
  Discipline? _discipline = Discipline.dressage;
 
-
-
-
   late final bool readOnly;
 
-
   TextEditingController dateinput = TextEditingController();
-  //text editing controller for text field
 
   String hrCounter = '00';
   String minCounter = '00';
@@ -45,24 +32,16 @@ class _LessonsViewState extends State<LessonsView> {
 
   final TextEditingController hoursController = TextEditingController();
 
-
- /* void _incrementCounter(){
-    setState(() {
-    //  LessonsObj lessonsObj = LessonsObj(careerController.text, horseRideController.text, hoursController.text, dateinput.text,dressageController.text,jumpsController.text,enduranceController.text);
-
-
-    });
-  } */
-
-
-
   @override
   void initState() {
     dateinput.text = ""; //set the initial value of text field
     super.initState();
   }
 
-
+  String split (String toto) {
+    var cutWord = toto.split('.').last;
+    return cutWord;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,16 +78,16 @@ class _LessonsViewState extends State<LessonsView> {
 
             ) ),
     TextField(
-    controller: dateinput, //editing controller of this TextField
+    controller: dateinput,
     decoration: const InputDecoration(
-    icon: Icon(Icons.calendar_today), //icon of text field
-    labelText: "Date" //label text of field
+    icon: Icon(Icons.calendar_today),
+    labelText: "Date"
     ), //  const Text ("Date"),
-          readOnly: true,  //set it true, so that user will not able to edit text
+          readOnly: true,
           onTap: () async {
             DateTime? pickedDate = await showDatePicker(
                 context: context, initialDate: DateTime.now(),
-                firstDate: DateTime.now(), //DateTime.now() - not to allow to choose before today.
+                firstDate: DateTime.now(),
                 lastDate: DateTime(2101)
             );
 
@@ -116,7 +95,6 @@ class _LessonsViewState extends State<LessonsView> {
               //print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
               String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
               print(formattedDate); //formatted date output using intl package =>  16-03-2021
-              //you can implement different kind of Date Format here according to your requirement
 
               setState(() {
                 dateinput.text = formattedDate; //set output date to TextField value.
@@ -174,7 +152,7 @@ class _LessonsViewState extends State<LessonsView> {
         },
       ),
 
-           Text ("Discipline"),
+           const Text ("Discipline"),
           ListTile(
             title: const Text("Dressage"),
             leading: Radio<Discipline>(
@@ -213,18 +191,17 @@ class _LessonsViewState extends State<LessonsView> {
             ) ),
             TextButton(
               onPressed: () {
-            //    _incrementCounter().clear;
-                Lessons lesson = Lessons(_discipline!, _ground!, dateinput.text, hoursController.text);
-                print(lesson.ground.toString().split('.').last);
-                print(lesson.ground.toString().split('.').last.runtimeType);
-                Navigator.pop(context, 'Valider');
+                  var splitDiscipline = split(_discipline.toString());
+                  var splitGround = split(_ground.toString());
+                  Lessons lesson = Lessons(splitDiscipline, splitGround, dateinput.text, hoursController.text);
+                  MongoDataBaseController.setlessons(lesson);
+                  Navigator.pop(context, 'Valider');
               },
               child: const Text('Valider'),
             ),
 
         ]),
     );
-
 
 
   }
